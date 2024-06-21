@@ -59,7 +59,7 @@ export default function SearchAppBar({ onSearchResults }) {
 
   const fetchRecipes = async (query) => {
     try {
-      const response = await fetch(`https://api.edamam.com/api/recipes/v2?q=${query}&type=public&app_id${process.env.app_id}=&app_key=${process.env.app_key}`);
+      const response = await fetch(`https://api.edamam.com/api/recipes/v2?q=${query}&type=public&app_id${process.env.APP_ID}=&app_key=${process.env.APP_KEY}`);
       const data = await response.json();
       onSearchResults(data);
     } catch (error) {
