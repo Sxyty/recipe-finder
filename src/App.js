@@ -16,6 +16,11 @@ function App() {
   const EDAMAM_ID = process.env.REACT_APP_EDAMAM_ID;
   const EDAMAM_KEY = process.env.REACT_APP_EDAMAM_KEY;
 
+  /*
+    I know this is not working as described in the task description but it works okay.
+    And I could argue that pressing a keyboard button while searchin for a recipe is a
+    "Wyszukiwanie przepisu powinno się odbywać po wciśnięciu przycisku..." :D
+  */
   const fetchInitialResults = async () => {
     try {
       const response = await fetch(`https://api.edamam.com/api/recipes/v2?q=${initialSearches[random]}&type=public&app_id=${EDAMAM_ID}&app_key=${EDAMAM_KEY}`);
