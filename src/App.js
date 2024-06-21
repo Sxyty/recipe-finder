@@ -15,7 +15,7 @@ function App() {
 
   const fetchInitialResults = async () => {
     try {
-      const response = await fetch(`https://api.edamam.com/api/recipes/v2?q=${initialSearches[random]}&type=public&app_id${process.env.APP_ID}=&app_key=${process.env.APP_KEY}`);
+      const response = await fetch(`https://api.edamam.com/api/recipes/v2?q=${initialSearches[random]}&type=public&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`);
       const data = await response.json();
       setRecipes(data.hits.slice(0, 6));
     } catch (error) {
