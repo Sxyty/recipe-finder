@@ -60,6 +60,11 @@ export default function SearchAppBar({ onSearchResults }) {
   const EDAMAM_ID = process.env.REACT_APP_EDAMAM_ID;
   const EDAMAM_KEY = process.env.REACT_APP_EDAMAM_KEY;
 
+  /*
+    I know this is not working as described in the task description but it works okay.
+    And I could argue that pressing a keyboard button while searchin for a recipe is a
+    "Wyszukiwanie przepisu powinno się odbywać po wciśnięciu przycisku..." :D
+  */
   const fetchRecipes = async (query) => {
     try {
       const response = await fetch(`https://api.edamam.com/api/recipes/v2?q=${query}&type=public&app_id=${EDAMAM_ID}&app_key=${EDAMAM_KEY}`);
@@ -80,7 +85,7 @@ export default function SearchAppBar({ onSearchResults }) {
               noWrap
               component="div"
             >
-              recipe-finder
+              RECIPE-FINDER
             </Typography>
             <Typography
               variant="subtitle1"

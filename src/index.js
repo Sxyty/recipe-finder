@@ -1,3 +1,9 @@
+/*
+  Author: Arkadiusz Pietrasiewicz
+  Index:  155705
+  Course: "Programowanie aplikacji internetowych"
+*/
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';

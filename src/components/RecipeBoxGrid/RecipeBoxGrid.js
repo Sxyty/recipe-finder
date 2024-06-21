@@ -2,6 +2,10 @@ import React from 'react';
 import RecipeBox from '../RecipeBox/RecipeBox';
 import styled from 'styled-components';
 
+/*
+  It was a lot easier to use CSS for calculating how many recipes
+  should there be in a row than duing it in JS
+*/
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -28,6 +32,7 @@ const RecipeBoxWrapper = styled.div`
 /*
   I planned a feature that would allow to load more recipies while scrolling 
   but it burnt through free api calls pretty quickly so I've removed it.
+  Should've left it as a POC.
 */
 
 const RecipeBoxGrid = ({ recipes }) => {
