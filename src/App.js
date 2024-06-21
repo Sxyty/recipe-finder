@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     fetchInitialResults();
-  });
+  }, []);
 
   const initialSearches = ["duck", "chicken", "lamb", "cake", "salad"];
   const random = Math.floor(Math.random() * initialSearches.length);
