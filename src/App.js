@@ -13,12 +13,12 @@ function App() {
   const initialSearches = ["duck", "chicken", "lamb", "cake", "salad"];
   const random = Math.floor(Math.random() * initialSearches.length);
 
-  const APP_ID = process.env.APP_ID;
-  const APP_KEY = process.env.APP_KEY;
+  const EDAMAM_ID = process.env.REACT_APP_EDAMAM_ID;
+  const EDAMAM_KEY = process.env.REACT_APP_EDAMAM_KEY;
 
   const fetchInitialResults = async () => {
     try {
-      const response = await fetch(`https://api.edamam.com/api/recipes/v2?q=${initialSearches[random]}&type=public&app_id=${APP_ID}&app_key=${APP_KEY}`);
+      const response = await fetch(`https://api.edamam.com/api/recipes/v2?q=${initialSearches[random]}&type=public&app_id=${EDAMAM_ID}&app_key=${EDAMAM_KEY}`);
       const data = await response.json();
       setRecipes(data.hits.slice(0, 6));
     } catch (error) {
