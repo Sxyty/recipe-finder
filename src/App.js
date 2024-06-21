@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import RecipeBoxGrid from './components/RecipeBoxGrid/RecipeBoxGrid';
+import SearchAppBar from './components/SearchAppBar/SearchAppBar';
+import { Typography, Box } from '@mui/material';
 
 function App() {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    fetchInitialResults();
+  }, []);
+
+  const initialSearches = ["duck", "chicken", "lamb", "cake", "salad"];
+  const random = Math.floor(Math.random() * initialSearches.length);
+
+  const fetchInitialResults = async () => {
+    try {
+      const response = await fetch(`https://api.edamam.com/api/recipes/v2?q=${initialSearches[random]}&type=public&app_id${process.env.app_id}=&app_key=${process.env.app_key}`);
+      const data = await response.json();
+      setRecipes(data.hits.slice(0, 6));
+    } catch (error) {
+      console.error('Error fetching initial recipes:', error);
+    }
+  };
+
+  const handleSearchResults = (data) => {
+    setRecipes(data.hits);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <SearchAppBar onSearchResults={handleSearchResults} />
+      <RecipeBoxGrid recipes={recipes} />
+      {recipes.length < 7 && (
+        <Box sx={{ textAlign: 'center', marginTop: '16px' }}>
+          <Typography variant="h6" component="div">
+            Use the search bar above to find more delicious recipes!
+          </Typography>
+        </Box>
+      )}
     </div>
   );
 }
